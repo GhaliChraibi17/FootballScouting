@@ -162,6 +162,7 @@ if page == "📌 Similarity Search":
     n = st.slider("Top N", 3, 30, 10)
 
     sim_list = compute_similarity(player, df_pca, cluster_labels, player_index)
+    sim_list = [(player, 100.0)] + sim_list  # Ajoute le joueur source en haut
     df_sim = pd.DataFrame(sim_list, columns=["Player", "Similarity"])
 
     top_players_df = df_sim.head(n)
